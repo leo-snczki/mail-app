@@ -4,12 +4,28 @@
 { pkgs, fetchurl, fetchgit, fetchhg }:
 
 self: super: {
-  "readkeys" = super.buildPythonPackage rec {
-    pname = "readkeys";
-    version = "1.0.2";
+  "dotenv" = super.buildPythonPackage rec {
+    pname = "dotenv";
+    version = "0.9.9";
     src = fetchurl {
-      url = "https://files.pythonhosted.org/packages/22/42/0be0768148dbc7d3f36d19e419edc3abd93ea05037b1debed50dfb880a4a/readkeys-1.0.2-py3-none-any.whl";
-      sha256 = "1652yva8fbfrnrxk8k01dxbprdqp9hbiy0rbrrd4kpr60x7kq49b";
+      url = "https://files.pythonhosted.org/packages/b2/b7/545d2c10c1fc15e48653c91efde329a790f2eecfbbf2bd16003b5db2bab0/dotenv-0.9.9-py2.py3-none-any.whl";
+      sha256 = "1sacr69fzyv9khry4h0mfk98xknb25z6sss4bbdsy7dkhyh79kr9";
+    };
+    format = "wheel";
+    doCheck = false;
+    buildInputs = [];
+    checkInputs = [];
+    nativeBuildInputs = [];
+    propagatedBuildInputs = [
+      self."python-dotenv"
+    ];
+  };
+  "python-dotenv" = super.buildPythonPackage rec {
+    pname = "python-dotenv";
+    version = "1.2.1";
+    src = fetchurl {
+      url = "https://files.pythonhosted.org/packages/14/1b/a298b06749107c305e1fe0f814c6c74aea7b2f1e10989cb30f544a1b3253/python_dotenv-1.2.1-py3-none-any.whl";
+      sha256 = "0qax8aw8q7k73cc1wrwl90zb0clc4cxbmjy6750h194w3rbfj7mq";
     };
     format = "wheel";
     doCheck = false;
